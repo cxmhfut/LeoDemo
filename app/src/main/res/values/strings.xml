@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LeoDemo</string>
+
+    <string name="base_demo">BaseDemo</string>
 </resources>

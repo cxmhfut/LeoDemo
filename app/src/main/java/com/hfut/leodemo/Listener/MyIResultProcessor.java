@@ -1,5 +1,8 @@
 package com.hfut.leodemo.Listener;
 
+import android.widget.Toast;
+
+import com.hfut.leodemo.app.LeoDemoApplication;
 import com.iflytek.business.speech.RecognizerResult;
 import com.leo.api.LeoSpeech;
 import com.leo.api.abstracts.IResultProcessor;
@@ -18,7 +21,7 @@ public class MyIResultProcessor implements IResultProcessor {
 
     @Override
     public void onResult(NLPResult nlpResult) {
-
+        Toast.makeText(LeoDemoApplication.getInstance().getApplicationContext(), "识别结果："+nlpResult.getRawtext(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
