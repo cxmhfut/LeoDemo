@@ -8,3 +8,13 @@ App for Leo robot about dialogue system
 连接好机器人，打开命令窗口，输入adb shell，如果前面操作都没有问题的话应该出现如下提示：
 
 ![leo_demo_01](https://github.com/cxmhfut/LeoDemo/blob/master/images/leo_demo_01.png)
+
+后面的“$”符说明现在是release模式，没有push文件的权限，通过如下命令可进入eng模式，获取push文件的权限：
+
+```
+ps adbd
+kill -12 [上一行显示的pid号]
+adb remount
+```
+
+![leo_demo_02](https://github.com/cxmhfut/LeoDemo/blob/master/images/leo_demo_02.png)
