@@ -1,17 +1,28 @@
-package com.hfut.leodemo.Listener;
+package com.hfut.leodemo.listener;
 
 import android.widget.Toast;
 
 import com.hfut.leodemo.app.LeoDemoApplication;
+import com.hfut.leodemo.service.SpeechService;
+import com.hfut.leodemo.service.SpeechServiceImpl;
 import com.iflytek.business.speech.RecognizerResult;
+import com.leo.api.LeoRobot;
 import com.leo.api.LeoSpeech;
 import com.leo.api.abstracts.IResultProcessor;
+import com.leo.api.abstracts.ISpeakListener;
 import com.leo.api.nlp.NLPResult;
 
 public class MyIResultProcessor implements IResultProcessor {
     @Override
     public void onInit() {
-        LeoSpeech.speak("语音服务初始化成功", null);
+        LeoSpeech.speak("Hi~，来跟我玩吧", new ISpeakListener() {
+            @Override
+            public void onSpeakOver(int i) {
+                LeoRobot.doReset();//机器人复位
+                LeoRobot.doMouthOn();//打开嘴灯
+                LeoSpeech.startRecognize();//开始识别
+            }
+        });
     }
 
     @Override
@@ -21,7 +32,19 @@ public class MyIResultProcessor implements IResultProcessor {
 
     @Override
     public void onResult(NLPResult nlpResult) {
-        Toast.makeText(LeoDemoApplication.getInstance().getApplicationContext(), "识别结果："+nlpResult.getRawtext(), Toast.LENGTH_SHORT).show();
+        String post = nlpResult.getRawtext();
+        LeoRobot.doMouthOff();//识别完成，关闭嘴灯
+
+        SpeechService speechService = SpeechServiceImpl.getInstance();
+        String response = speechService.ask(post);
+
+        LeoSpeech.speak(response, new ISpeakListener() {
+            @Override
+            public void onSpeakOver(int i) {
+                LeoRobot.doMouthOn();
+                LeoSpeech.startRecognize();
+            }
+        });
     }
 
     @Override

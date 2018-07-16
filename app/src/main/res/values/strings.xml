@@ -2,4 +2,133 @@
     <string name="app_name">LeoDemo</string>
 
     <string name="base_demo">BaseDemo</string>
+
+    <string-array name="POST_PATTERN">
+        <item>.*情感.*实验室.*</item>
+        <item>.*介绍.*自己.*|.*你.*名字.*</item>
+        <item>.*我.*女朋友.*|.*你.*男朋友.*</item>
+        <item>.*难过.*|.*伤心.*|.*不开心.*</item>
+        <item>.*感冒了.*|.*不舒服.*|.*难受.*</item>
+        <item>.*考试.*考好.*</item>
+        <item>.*恐怖.*|.*可怕.*</item>
+        <item>.*无聊.*|.*没意思.*</item>
+        <item>.*合工大.*校长.*|.*合肥工业大学.*校长.*</item>
+    </string-array>
+
+    <string-array name="RESPONSE">
+        <item>“情感计算与先进智能机器安徽省重点实验室”依托合肥工业大学建设，以先进智能为导向，以情感计算为核心与特色，以先进智能机器为载体，展开情感计算与先进智能机器的研究。</item>
+        <item>我叫斛兵，智慧与勇气的化身，来自合肥工业大学情感计算实验室。</item>
+        <item>人家还小啦，暂时不考虑这些事情。</item>
+        <item>我听说人的一生，既不是人们想象的那么好，也不是人们想象的那么坏。</item>
+        <item>多喝热水，注意保暖，身体才是革命的本钱呢。</item>
+        <item>当然了！但人生的考卷长如清明上河图，考过了这个还有下一个。</item>
+        <item>别怕，有我在，我会负责保护你的。</item>
+        <item>时不时读点好书，有空了就散散步，尝试和不同国籍的人和平相处。</item>
+        <item>梁梁</item>
+    </string-array>
+
+    <string-array name="ACTION_PATTERN">
+        <item>再见</item>
+        <item>请</item>
+        <item>你好</item>
+        <item>抱抱</item>
+        <item>敬礼</item>
+        <item>欢迎</item>
+        <item>稍息</item>
+        <item>谢谢我</item>
+        <item>赞</item>
+        <item>害羞</item>
+        <item>无聊</item>
+        <item>叹气</item>
+        <item>指挥交通</item>
+        <item>大哭</item>
+        <item>前进</item>
+        <item>后退</item>
+        <item>扭秧歌</item>
+        <item>发抖</item>
+        <item>后仰</item>
+        <item>躲闪</item>
+        <item>太棒了</item>
+        <item>扎马步</item>
+        <item>防守</item>
+        <item>安静</item>
+        <item>伤心</item>
+        <item>投降</item>
+        <item>功夫</item>
+        <item>太逗了</item>
+        <item>甩胳膊</item>
+        <item>劈叉</item>
+        <item>翩翩起舞</item>
+        <item>踢腿</item>
+    </string-array>
+
+    <string-array name="ACTION_RESPONSE">
+        <item>再见，记得有空常来找我玩哦，拜拜。</item>
+        <item>大爷您这边请</item>
+        <item>来，握个手，我们都是好朋友</item>
+        <item>给你一个爱的抱抱</item>
+        <item>给您敬礼啦！</item>
+        <item>欢迎欢迎，热烈欢迎。</item>
+        <item>稍息。</item>
+        <item>万分感谢您。</item>
+        <item>我要给你打82分，剩下的18分以666的形式送给你</item>
+        <item>讨厌啦，人家会害羞的啦</item>
+        <item>好无聊哎，我们来干点什么好呢？</item>
+        <item>唉，和愚蠢的人类交流真的是太费力了。</item>
+        <item>前面的车，右转！</item>
+        <item>嘤嘤嘤，大坏蛋，小拳拳捶你胸口~</item>
+        <item>今天天气不错，挺风和日丽的。</item>
+        <item>好怕怕呀！</item>
+        <item>猪呀，羊呀，送到哪里去呀，送给那英勇的解放军</item>
+        <item>这破地方怎么这么冷，冻死我了。</item>
+        <item>啊~好困啊</item>
+        <item>嘿嘿嘿，你就是打不到我~</item>
+        <item>真棒，你太了不起了！</item>
+        <item>我的心里一直有个梦，就是去。师父~我坚持不住啦~</item>
+        <item>我错了我错了，不要打我好不好啊</item>
+        <item>嘘，别出声</item>
+        <item>好伤心啊</item>
+        <item>你赢了，你赢了还不行吗？地球人真难伺候</item>
+        <item>快使用双截棍，哼哼哈嘿！</item>
+        <item>哈哈哈，太好笑了。</item>
+        <item>一二三四，二二三四，再来一次。</item>
+        <item>看我来劈个叉，哎呀呀不行了</item>
+        <item>来呀快活呀</item>
+        <item>哈，踢飞你</item>
+    </string-array>
+
+    <string-array name="ACTION_COMMAND">
+        <item>bye</item>
+        <item>please</item>
+        <item>woshou</item>
+        <item>embrace</item>
+        <item>salute</item>
+        <item>welcome</item>
+        <item>rest</item>
+        <item>thanks</item>
+        <item>praise</item>
+        <item>shy</item>
+        <item>bored</item>
+        <item>sigh</item>
+        <item>traffic</item>
+        <item>crywail</item>
+        <item>forward</item>
+        <item>backward</item>
+        <item>yangko</item>
+        <item>shake</item>
+        <item>houyang</item>
+        <item>mv1</item>
+        <item>perfect1</item>
+        <item>akimbo</item>
+        <item>defense</item>
+        <item>quiet</item>
+        <item>sad</item>
+        <item>lose</item>
+        <item>kungfu</item>
+        <item>laugh</item>
+        <item>baibi</item>
+        <item>split</item>
+        <item>qiwu</item>
+        <item>rkick</item>
+    </string-array>
 </resources>

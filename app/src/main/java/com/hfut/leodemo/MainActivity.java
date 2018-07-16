@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.hfut.leodemo.Listener.MyIResultProcessor;
-import com.hfut.leodemo.Listener.MyIRobotListener;
+import com.hfut.leodemo.listener.MyIResultProcessor;
+import com.hfut.leodemo.listener.MyIRobotListener;
 import com.leo.api.LeoRobot;
 import com.leo.api.LeoSpeech;
 import com.leo.api.version.VersionManager;
