@@ -38,6 +38,10 @@ public class MyIResultProcessor implements IResultProcessor {
         SpeechService speechService = SpeechServiceImpl.getInstance();
         String response = speechService.ask(post);
 
+        if(response==null){
+            response = "没听懂你说的，能再说一次吗？";
+        }
+
         LeoSpeech.speak(response, new ISpeakListener() {
             @Override
             public void onSpeakOver(int i) {
@@ -64,7 +68,14 @@ public class MyIResultProcessor implements IResultProcessor {
 
     @Override
     public void onError(int i) {
-
+        LeoRobot.doMouthOff();
+        LeoSpeech.speak("Hi,你好", new ISpeakListener() {
+            @Override
+            public void onSpeakOver(int i) {
+                LeoRobot.doMouthOn();
+                LeoSpeech.startRecognize();
+            }
+        });
     }
 
     @Override
