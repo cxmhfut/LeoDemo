@@ -3,6 +3,7 @@ package com.hfut.leodemo.listener;
 import android.widget.Toast;
 
 import com.hfut.leodemo.app.LeoDemoApplication;
+import com.hfut.leodemo.service.ActionServiceImpl;
 import com.hfut.leodemo.service.SpeechService;
 import com.hfut.leodemo.service.SpeechServiceImpl;
 import com.iflytek.business.speech.RecognizerResult;
@@ -35,20 +36,40 @@ public class MyIResultProcessor implements IResultProcessor {
         String post = nlpResult.getRawtext();
         LeoRobot.doMouthOff();//识别完成，关闭嘴灯
 
-        SpeechService speechService = SpeechServiceImpl.getInstance();
-        String response = speechService.ask(post);
+        SpeechServiceImpl speechService = SpeechServiceImpl.getInstance();
+        ActionServiceImpl actionService = ActionServiceImpl.getInstance();
 
-        if(response==null){
-            response = "没听懂你说的，能再说一次吗？";
-        }
-
-        LeoSpeech.speak(response, new ISpeakListener() {
+        actionService.setActionCallBack(new ActionServiceImpl.ActionCallBack() {
             @Override
-            public void onSpeakOver(int i) {
-                LeoRobot.doMouthOn();
-                LeoSpeech.startRecognize();
+            public void onActionComplete(String actionName, String actionResponse) {
+                //动作处理完后回调函数
+                LeoRobot.doReset();//使机器人复位
+                LeoSpeech.speak(actionResponse, new ISpeakListener() {
+                    @Override
+                    public void onSpeakOver(int i) {
+                        LeoRobot.doMouthOn();
+                        LeoSpeech.startRecognize();
+                    }
+                });
+                LeoRobot.doAction(actionName);
             }
         });
+
+        if(!actionService.doAction(post)){
+            String response = speechService.ask(post);
+
+            if(response==null) {
+                response = "我还不懂您说的，但是我正在认真学习呢。";
+            }
+
+            LeoSpeech.speak(response, new ISpeakListener() {
+                @Override
+                public void onSpeakOver(int i) {
+                    LeoRobot.doMouthOn();
+                    LeoSpeech.startRecognize();
+                }
+            });
+        }
     }
 
     @Override

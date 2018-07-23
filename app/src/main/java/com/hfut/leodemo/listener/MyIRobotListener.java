@@ -1,11 +1,15 @@
 package com.hfut.leodemo.listener;
 
+import com.leo.api.LeoRobot;
+import com.leo.api.LeoSpeech;
 import com.leo.api.abstracts.IRobotListener;
 
-public class MyIRobotListener implements IRobotListener{
+public class MyIRobotListener implements IRobotListener {
     @Override
     public void onTouch() {
-
+        //摸头复位
+        LeoRobot.doReset();
+        LeoSpeech.stopSpeak();
     }
 
     @Override

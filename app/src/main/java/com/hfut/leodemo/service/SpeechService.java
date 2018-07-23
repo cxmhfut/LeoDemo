@@ -8,4 +8,8 @@ public interface SpeechService {
      */
     String ask(String post);
 
+    /**
+     * 加载资源
+     */
+    void loadResources();
 }

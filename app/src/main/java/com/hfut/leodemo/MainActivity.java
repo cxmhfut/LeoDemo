@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //组件注入器与activity进行绑定
         ButterKnife.bind(this);
+
         //设置机器人版本
         VersionManager.setVersion(VersionManager.ONE);
         initLeo();//初始化Leo机器人

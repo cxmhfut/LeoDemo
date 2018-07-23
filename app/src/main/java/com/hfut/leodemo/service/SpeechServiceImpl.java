@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class SpeechServiceImpl implements SpeechService {
 
-    private static SpeechService instance;
+    private static SpeechServiceImpl instance;
     private String postPattern[];
     private String response[];
 
@@ -15,7 +15,7 @@ public class SpeechServiceImpl implements SpeechService {
 
     }
 
-    public static SpeechService getInstance() {
+    public static SpeechServiceImpl getInstance() {
         if (instance == null) {
             synchronized (SpeechServiceImpl.class) {
                 if (instance == null) {
@@ -27,7 +27,8 @@ public class SpeechServiceImpl implements SpeechService {
         return instance;
     }
 
-    private void loadResources() {
+    @Override
+    public void loadResources() {
         if (postPattern == null || response == null) {
             LeoDemoApplication app = LeoDemoApplication.getInstance();
             postPattern = app.getResources().getStringArray(R.array.POST_PATTERN);
