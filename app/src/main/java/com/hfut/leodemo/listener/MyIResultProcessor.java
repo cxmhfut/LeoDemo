@@ -1,10 +1,6 @@
 package com.hfut.leodemo.listener;
 
-import android.widget.Toast;
-
-import com.hfut.leodemo.app.LeoDemoApplication;
 import com.hfut.leodemo.service.ActionServiceImpl;
-import com.hfut.leodemo.service.SpeechService;
 import com.hfut.leodemo.service.SpeechServiceImpl;
 import com.iflytek.business.speech.RecognizerResult;
 import com.leo.api.LeoRobot;

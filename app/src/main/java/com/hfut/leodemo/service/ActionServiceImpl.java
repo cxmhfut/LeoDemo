@@ -2,8 +2,6 @@ package com.hfut.leodemo.service;
 
 import com.hfut.leodemo.R;
 import com.hfut.leodemo.app.LeoDemoApplication;
-import com.leo.api.LeoRobot;
-import com.leo.api.LeoSpeech;
 
 import java.util.regex.Pattern;
 
@@ -34,10 +32,6 @@ public class ActionServiceImpl implements ActionService {
         }
 
         return instance;
-    }
-
-    public ActionCallBack getActionCallBack() {
-        return actionCallBack;
     }
 
     public void setActionCallBack(ActionCallBack actionCallBack) {
