@@ -9,7 +9,7 @@ public class MyIRobotListener implements IRobotListener {
     public void onTouch() {
         //摸头复位
         LeoRobot.doReset();
-        LeoSpeech.stopSpeak();
+        LeoSpeech.startRecognize();
     }
 
     @Override

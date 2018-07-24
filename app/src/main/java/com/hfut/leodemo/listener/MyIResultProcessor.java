@@ -39,23 +39,34 @@ public class MyIResultProcessor implements IResultProcessor {
             @Override
             public void onActionComplete(String actionName, String actionResponse) {
                 //动作处理完后回调函数
-                LeoRobot.doReset();//使机器人复位
+                LeoRobot.doAction(actionName);
                 LeoSpeech.speak(actionResponse, new ISpeakListener() {
                     @Override
                     public void onSpeakOver(int i) {
+                        LeoRobot.doReset();//使机器人复位
                         LeoRobot.doMouthOn();
                         LeoSpeech.startRecognize();
                     }
                 });
-                LeoRobot.doAction(actionName);
             }
         });
 
-        if(!actionService.doAction(post)){
+        if (!actionService.doAction(post)) {
             String response = speechService.ask(post);
 
-            if(response==null) {
-                response = "我还不懂您说的，但是我正在认真学习呢。";
+            if (response == null) {
+                response = "你说什么啊";
+            }
+
+            if (post.contains("闭嘴")) {
+                LeoSpeech.speak("我用胶带把嘴封上，想要恢复请摸摸我的头", new ISpeakListener() {
+                    @Override
+                    public void onSpeakOver(int i) {
+                        LeoRobot.doReset();
+                        LeoSpeech.stopSpeak();
+                    }
+                });
+                return;
             }
 
             LeoSpeech.speak(response, new ISpeakListener() {
@@ -86,7 +97,7 @@ public class MyIResultProcessor implements IResultProcessor {
     @Override
     public void onError(int i) {
         LeoRobot.doMouthOff();
-        LeoSpeech.speak("Hi,你好", new ISpeakListener() {
+        LeoSpeech.speak("Hi,来跟我玩吧", new ISpeakListener() {
             @Override
             public void onSpeakOver(int i) {
                 LeoRobot.doMouthOn();

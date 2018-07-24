@@ -3,8 +3,6 @@ package com.hfut.leodemo.service;
 import com.hfut.leodemo.R;
 import com.hfut.leodemo.app.LeoDemoApplication;
 
-import java.util.regex.Pattern;
-
 public class ActionServiceImpl implements ActionService {
 
     private static ActionServiceImpl instance;
@@ -52,10 +50,8 @@ public class ActionServiceImpl implements ActionService {
     public boolean doAction(String post) {
 
         loadResources();
-
         for (int i = 0; i < actionPattern.length; i++) {
-            boolean isMatch = Pattern.matches(actionPattern[i], post);
-            if (isMatch) {
+            if (post.contains(actionPattern[i])) {
                 if (actionCallBack != null) {
                     actionCallBack.onActionComplete(actionCommand[i], actionResponse[i]);
                 }
