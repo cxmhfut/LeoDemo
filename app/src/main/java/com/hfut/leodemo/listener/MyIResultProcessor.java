@@ -52,30 +52,28 @@ public class MyIResultProcessor implements IResultProcessor {
         });
 
         if (!actionService.doAction(post)) {
-            String response = speechService.ask(post);
-
-            if (response == null) {
-                response = "你说什么啊";
-            }
-
-            if (post.contains("闭嘴")) {
-                LeoSpeech.speak("我用胶带把嘴封上，想要恢复请摸摸我的头", new ISpeakListener() {
-                    @Override
-                    public void onSpeakOver(int i) {
-                        LeoRobot.doReset();
-                        LeoSpeech.stopSpeak();
-                    }
-                });
-                return;
-            }
-
-            LeoSpeech.speak(response, new ISpeakListener() {
+            speechService.setQueryListener(new SpeechServiceImpl.QueryListener() {
                 @Override
-                public void onSpeakOver(int i) {
-                    LeoRobot.doMouthOn();
-                    LeoSpeech.startRecognize();
+                public void onResponse(String response) {
+                    if (response.equals(SpeechServiceImpl.SHUT_UP_RESPONSE)) {
+                        LeoSpeech.speak(SpeechServiceImpl.SHUT_UP_RESPONSE, null);
+                    } else {
+                        LeoSpeech.speak(response, new ISpeakListener() {
+                            @Override
+                            public void onSpeakOver(int i) {
+                                LeoRobot.doMouthOn();
+                                LeoSpeech.startRecognize();
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onFailure() {
+                    LeoSpeech.speak(SpeechServiceImpl.NET_WORK_ERROR, null);
                 }
             });
+            speechService.query(post);
         }
     }
 
